@@ -1,17 +1,9 @@
-import React, { useState } from "react";
-// import { UserContext } from "../../../contexts/userContext";
+import React from "react";
 
-const lib = (props, context) => {
-  const [value, setValue] = useState("default");
-  const handleFieldChange = e => {
-    setValue(e.target.value);
-  };
+export default props => {
   return (
     <section>
-      <input type="text" id="value" onChange={handleFieldChange} />
-      <h3>{value}</h3>
+      <h5>{props.value}</h5>
     </section>
   );
 };
-
-export default lib;
