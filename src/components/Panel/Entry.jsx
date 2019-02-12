@@ -4,6 +4,7 @@ import "./Entry.css";
 export default props => {
   const [name, setName] = React.useState();
   const [address, setAddress] = React.useState();
+  const [isLogged, setLogged] = React.useState(false);
 
   const nameChangeHandler = e => {
     setName(e.target.value);
@@ -14,10 +15,11 @@ export default props => {
   };
 
   const connectToServerHandler = () => {
-    alert(name + "\n" + address);
+    setLogged(true);
+    console.log(name, address);
   };
 
-  if (address) {
+  if (!isLogged) {
     return (
       <div className="login">
         <input onChange={nameChangeHandler} className="nameInput" type="text" />
