@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import "./ChatFeed";
 
 export default props => {
   const [isConnected, setConnected] = useState(false);
   const [connection, setConnection] = useState({});
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState({ body: "" });
   const [messages, setMessages] = useState([]);
   const signalR = require("@aspnet/signalr");
 
@@ -33,8 +34,11 @@ export default props => {
   }, {});
 
   const sendMessage = () => {
-    connection.invoke("sendmessage", message);
-    setMessage("");
+    console.log(message.body);
+    if (message.body.length !== 0) {
+      connection.invoke("sendmessage", message);
+      setMessage("");
+    }
   };
 
   const setCurrentMessage = e => {
@@ -43,17 +47,22 @@ export default props => {
 
   if (isConnected) {
     return (
-      <div className="chatFeed">
-        {messages.map(message => {
-          return (
-            <h3 key={message}>
-              {message.name} > {message.body}
-            </h3>
-          );
-        })}
+      <div className="chatFeedInstace">
+        <ul class="collection">
+          {messages.map(message => {
+            return (
+              <li key={Math.random()} class="collection-item">
+                {message.name} : {message.body}
+              </li>
+            );
+          })}
+        </ul>
+
         <div className="chatInput">
           <input onChange={setCurrentMessage} />
-          <button onClick={sendMessage}>Send</button>
+          <a onClick={sendMessage} class="waves-effect waves-light btn">
+            Send
+          </a>
         </div>
       </div>
     );

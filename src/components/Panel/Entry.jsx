@@ -35,14 +35,18 @@ export default props => {
           className="addressInput"
           type="text"
         />
-        <button onClick={connectToServerHandler} className="connectButton">
+
+        <a
+          onClick={connectToServerHandler}
+          class="waves-effect waves-light btn"
+        >
           Connect
-        </button>
+        </a>
       </div>
     );
   } else {
     return (
-      <div>
+      <div className="chatFeed">
         <ChatInstance name={name} address={address} />
         {/* <ChatFeed name={name} address={address} /> */}
       </div>
