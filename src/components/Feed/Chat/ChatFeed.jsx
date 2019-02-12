@@ -3,10 +3,12 @@ import Entry from "../../Panel/Entry";
 
 export default class ChatFeed extends Component {
   state = {
-    messages: []
+    messages: [],
+    rooms: []
   };
   componentDidMount = () => {
     this.signalR = require("@aspnet/signalr");
+
     this.connection = new this.signalR.HubConnectionBuilder()
       .withUrl("http://localhost:5000/chat")
       .build();
@@ -26,11 +28,12 @@ export default class ChatFeed extends Component {
     this.connection
       .start()
       .then(() => {
-        this.connection.invoke("joinroom", this.state.nick, "1");
-        this.setState({
-          connected: true
-        });
-        console.log("connected to room1");
+        let roomName = "default";
+        this.connection.invoke("joinroom", this.state.nick, roomName);
+        this.setState(prev => ({
+          connected: true,
+          rooms: [...prev.rooms, roomName]
+        }));
       })
       .catch(err => console.error(err));
   };
