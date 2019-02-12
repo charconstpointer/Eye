@@ -1,5 +1,18 @@
 .login {
+  margin: 0 auto;
+  width: 80%;
   display: flex;
-  justify-content: center;
-  flex-direction: row;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.login .nameInput,
+.login .addressInput {
+  margin-top: 5%;
+  font-size: 1.25em;
+}
+
+.login .connectButton {
+  margin-top: 5%;
+  font-size: 1.25em;
 }
