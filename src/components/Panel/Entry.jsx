@@ -17,17 +17,25 @@ export default props => {
     alert(name + "\n" + address);
   };
 
-  return (
-    <div className="login">
-      <input onChange={nameChangeHandler} className="nameInput" type="text" />
-      <input
-        onChange={addressChangeHandler}
-        className="addressInput"
-        type="text"
-      />
-      <button onClick={connectToServerHandler} className="connectButton">
-        Connect
-      </button>
-    </div>
-  );
+  if (address) {
+    return (
+      <div className="login">
+        <input onChange={nameChangeHandler} className="nameInput" type="text" />
+        <input
+          onChange={addressChangeHandler}
+          className="addressInput"
+          type="text"
+        />
+        <button onClick={connectToServerHandler} className="connectButton">
+          Connect
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>nice</p>
+      </div>
+    );
+  }
 };
