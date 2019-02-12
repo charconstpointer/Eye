@@ -1,5 +1,7 @@
 import React from "react";
 import "./Entry.css";
+// import ChatFeed from "../Feed/Chat/ChatFeed";
+import ChatInstance from "../Feed/Chat/ChatInstance";
 
 export default props => {
   const [name, setName] = React.useState();
@@ -16,14 +18,19 @@ export default props => {
 
   const connectToServerHandler = () => {
     setLogged(true);
-    console.log(name, address);
   };
 
   if (!isLogged) {
     return (
       <div className="login">
-        <input onChange={nameChangeHandler} className="nameInput" type="text" />
         <input
+          placeholder="Your name"
+          onChange={nameChangeHandler}
+          className="nameInput"
+          type="text"
+        />
+        <input
+          placeholder="Server address"
           onChange={addressChangeHandler}
           className="addressInput"
           type="text"
@@ -36,7 +43,8 @@ export default props => {
   } else {
     return (
       <div>
-        <p>nice</p>
+        <ChatInstance name={name} address={address} />
+        {/* <ChatFeed name={name} address={address} /> */}
       </div>
     );
   }

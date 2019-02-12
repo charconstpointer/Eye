@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Entry from "../../Panel/Entry";
 
 export default class ChatFeed extends Component {
   state = {
@@ -8,23 +7,14 @@ export default class ChatFeed extends Component {
   };
   componentDidMount = () => {
     this.signalR = require("@aspnet/signalr");
-
     this.connection = new this.signalR.HubConnectionBuilder()
-      .withUrl("http://localhost:5000/chat")
+      .withUrl(this.props.address)
       .build();
     this.connection.on("receiveMessage", message => {
       this.setState(prevState => ({
         messages: [...prevState.messages, message]
       }));
     });
-  };
-
-  onConnect = nick => {
-    this.setState(prevState => ({
-      ...prevState,
-      nick: nick
-    }));
-
     this.connection
       .start()
       .then(() => {
@@ -37,9 +27,16 @@ export default class ChatFeed extends Component {
       })
       .catch(err => console.error(err));
   };
+
+  onConnect = nick => {
+    this.setState(prevState => ({
+      ...prevState,
+      nick: nick
+    }));
+  };
   render() {
     if (!this.state.connected) {
-      return <Entry onEntry={this.onConnect} />;
+      return <h3>connecting...</h3>;
     } else {
       return (
         <div>
