@@ -11,3 +11,5 @@ this.connection.on("actionName", message => {
   //Where actionName is an event name emmitted by a hub which we are connected to
 });
 ```
+
+ Please avoid creating unnecessary connections, instead keep already established connections alive
