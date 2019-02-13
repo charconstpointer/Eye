@@ -1,7 +1,6 @@
 import React from "react";
 import "./Entry.css";
-// import ChatFeed from "../Feed/Chat/ChatFeed";
-import ChatInstance from "../ChatInstance";
+import ChatInstance from "../../ChatInstance/ChatInstance";
 
 export default props => {
   const [name, setName] = React.useState();

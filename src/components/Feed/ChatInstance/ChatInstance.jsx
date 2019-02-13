@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./ChatFeed";
+import "../Chat/ChatFeed";
 
 export default props => {
   const [isConnected, setConnected] = useState(false);
