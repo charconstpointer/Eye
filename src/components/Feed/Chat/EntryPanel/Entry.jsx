@@ -1,7 +1,7 @@
 import React from "react";
 import "./Entry.css";
 // import ChatFeed from "../Feed/Chat/ChatFeed";
-import ChatInstance from "../Feed/Chat/ChatInstance";
+import ChatInstance from "../ChatInstance";
 
 export default props => {
   const [name, setName] = React.useState();
@@ -46,9 +46,8 @@ export default props => {
     );
   } else {
     return (
-      <div className="chatFeed">
+      <div className="container">
         <ChatInstance name={name} address={address} />
-        {/* <ChatFeed name={name} address={address} /> */}
       </div>
     );
   }

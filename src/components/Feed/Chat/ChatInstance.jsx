@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./ChatFeed";
 
 export default props => {
@@ -6,6 +6,7 @@ export default props => {
   const [connection, setConnection] = useState({});
   const [message, setMessage] = useState({ body: "" });
   const [messages, setMessages] = useState([]);
+  const messageInput = useRef();
   const signalR = require("@aspnet/signalr");
 
   useEffect(() => {
@@ -34,10 +35,10 @@ export default props => {
   }, {});
 
   const sendMessage = () => {
-    console.log(message.body);
     if (message.body.length !== 0) {
       connection.invoke("sendmessage", message);
-      setMessage("");
+      setMessage({ ...message, body: "" });
+      messageInput.current.value = "";
     }
   };
 
@@ -47,7 +48,7 @@ export default props => {
 
   if (isConnected) {
     return (
-      <div className="chatFeedInstace">
+      <div className="chatFeed">
         <ul class="collection">
           {messages.map(message => {
             return (
@@ -59,7 +60,7 @@ export default props => {
         </ul>
 
         <div className="chatInput">
-          <input onChange={setCurrentMessage} />
+          <input ref={messageInput} onChange={setCurrentMessage} />
           <a onClick={sendMessage} class="waves-effect waves-light btn">
             Send
           </a>
