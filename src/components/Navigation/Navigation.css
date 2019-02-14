@@ -1,0 +1,10 @@
+.navigation ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+.navigation li {
+  display: inline;
+}
+.navigation a {
+  font-size: 1.1em;
+}
