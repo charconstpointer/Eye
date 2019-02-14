@@ -1,14 +1,15 @@
 import React, { useState, useRef } from "react";
+import Validator from "../../utils/validation";
 import "./Login.css";
 export default props => {
   const userName = useRef();
   const password = useRef();
   const handleLogin = () => {
     if (
-      userName.current.value.length > 5 &&
-      password.current.value.length > 5
+      Validator.validateUsername(userName.current.value) &&
+      Validator.validatePassword(password.current.value)
     ) {
-      console.log("ok");
+      console.log("gud");
     } else {
       console.log("not");
     }
