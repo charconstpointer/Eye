@@ -1,6 +1,7 @@
 import React from "react";
 import "./Entry.css";
 import ChatInstance from "../../ChatInstance/ChatInstance";
+import validator from "../../../../utils/validation";
 
 export default props => {
   const [name, setName] = React.useState();
@@ -16,7 +17,11 @@ export default props => {
   };
 
   const connectToServerHandler = () => {
-    setLogged(true);
+    if (validator.validateHostAddress(address)) {
+      setLogged(true);
+    } else {
+      console.log("wrong address format");
+    }
   };
 
   if (!isLogged) {
