@@ -14,8 +14,6 @@ export default props => {
       .withUrl(props.address)
       .build();
     chatrConnection.on("receiveMessage", message => {
-      console.log("mess", message);
-
       setMessages(prevMessages => [
         ...prevMessages,
         {
