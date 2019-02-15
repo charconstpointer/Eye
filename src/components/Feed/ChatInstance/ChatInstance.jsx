@@ -58,7 +58,7 @@ export default props => {
         </ul>
         <div className="chatInput">
           <input ref={messageInput} onChange={setCurrentMessage} />
-          <a onClick={sendMessage} class="waves-effect waves-light btn">
+          <a onClick={sendMessage} class="waves-effect  waves-light btn">
             Send
           </a>
         </div>
