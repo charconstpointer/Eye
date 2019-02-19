@@ -9,7 +9,7 @@ const validator = {
   //
   validateHostAddress: address =>
     RegExp(
-      "(https|http)?(://)?(www.)?([a-zA-Z0-9])+(:[0-9]{2,5})?.(com|pl|org|net)/([a-zA-Z]+)?"
+      "(https|http)?(://)?(www.)?([a-zA-Z0-9])+(:[0-9]{2,5})?.(com|pl|org|net)?/([a-zA-Z]+)?"
     ).test(address)
 };
 

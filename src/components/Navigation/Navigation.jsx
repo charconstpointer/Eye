@@ -9,12 +9,16 @@ export default props => {
   return (
     <Router>
       <div className="navigation">
-        <ul>
+        <ul className="navigationItems">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <h5>Home</h5>
+            </Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login">
+              <h5>Login</h5>
+            </Link>
           </li>
         </ul>
         <Switch>

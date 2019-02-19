@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "../Chat/ChatFeed";
+import "../Chat/ChatFeed.css";
 
 export default props => {
   const [isConnected, setConnected] = useState(false);
@@ -51,7 +51,9 @@ export default props => {
           {messages.map(message => {
             return (
               <li key={Math.random()} class="collection-item">
-                {message.name} : {message.body}
+                <h4>
+                  {message.name} : {message.body}
+                </h4>
               </li>
             );
           })}

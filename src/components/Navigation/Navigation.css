@@ -1,10 +1,7 @@
-.navigation ul {
+.navigationItems {
   display: flex;
   justify-content: space-evenly;
 }
-.navigation li {
+.navigationItems li {
   display: inline;
-}
-.navigation a {
-  font-size: 1.1em;
 }
