@@ -1,6 +1,9 @@
 import React, { useState, useRef } from "react";
 import Validator from "../../utils/validation";
+import { UserProvider, UserConsumer } from "../../contexts/UserContext";
+
 import "./Login.css";
+
 export default props => {
   const userName = useRef();
   const password = useRef();
