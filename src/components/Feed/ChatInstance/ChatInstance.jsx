@@ -1,5 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
+<<<<<<< HEAD
 // import "../Chat/ChatFeed";
+=======
+import "../Chat/ChatFeed.css";
+>>>>>>> c504f268a10d9184351848df92ed7452e8a6682e
 
 export default props => {
   const [isConnected, setConnected] = useState(false);
@@ -14,8 +18,6 @@ export default props => {
       .withUrl(props.address)
       .build();
     chatrConnection.on("receiveMessage", message => {
-      console.log("mess", message);
-
       setMessages(prevMessages => [
         ...prevMessages,
         {
@@ -53,15 +55,16 @@ export default props => {
           {messages.map(message => {
             return (
               <li key={Math.random()} class="collection-item">
-                {message.name} : {message.body}
+                <h4>
+                  {message.name} : {message.body}
+                </h4>
               </li>
             );
           })}
         </ul>
-
         <div className="chatInput">
           <input ref={messageInput} onChange={setCurrentMessage} />
-          <a onClick={sendMessage} class="waves-effect waves-light btn">
+          <a onClick={sendMessage} class="waves-effect  waves-light btn">
             Send
           </a>
         </div>

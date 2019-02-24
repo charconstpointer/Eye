@@ -1,6 +1,10 @@
 import React, { useState, useRef } from "react";
 import Validator from "../../utils/validation";
+<<<<<<< HEAD
 import { UserProvider, UserConsumer } from "../../contexts/UserContext";
+=======
+import axios from "axios";
+>>>>>>> c504f268a10d9184351848df92ed7452e8a6682e
 
 import "./Login.css";
 
@@ -10,9 +14,27 @@ export default props => {
   const handleLogin = () => {
     if (
       Validator.validateUsername(userName.current.value) &&
-      Validator.validatePassword(password.current.value)
+      // Validator.validatePassword(password.current.value)
+      true
     ) {
-      console.log("gud");
+      let data = JSON.stringify({
+        name: "fuark",
+        password: "mushroom"
+      });
+      axios
+        .post("https://localhost:44326/api/accounts/auth", data, {
+          headers: { "Content-Type": "application/json; charset=utf-8" }
+        })
+        .then(res => {
+          const token = res.data.token;
+          axios
+            .get("https://localhost:44326/api/values/", {
+              headers: { Authorization: `Bearer ${token}` }
+            })
+            .then(res => console.log(res));
+        })
+        .catch(err => console.error(err));
+      console.log(data);
     } else {
       console.log("not");
     }

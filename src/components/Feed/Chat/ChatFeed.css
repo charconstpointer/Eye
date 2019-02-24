@@ -1,0 +1,10 @@
+.chatFeed {
+  width: 100%;
+}
+
+.collection ul {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
