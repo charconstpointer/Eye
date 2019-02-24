@@ -1,9 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-<<<<<<< HEAD
-// import "../Chat/ChatFeed";
-=======
 import "../Chat/ChatFeed.css";
->>>>>>> c504f268a10d9184351848df92ed7452e8a6682e
 
 export default props => {
   const [isConnected, setConnected] = useState(false);

@@ -1,10 +1,6 @@
 import React, { useState, useRef } from "react";
 import Validator from "../../utils/validation";
-<<<<<<< HEAD
-import { UserProvider, UserConsumer } from "../../contexts/UserContext";
-=======
 import axios from "axios";
->>>>>>> c504f268a10d9184351848df92ed7452e8a6682e
 
 import "./Login.css";
 
