@@ -8,7 +8,7 @@ export default props => {
   const [messages, setMessages] = useState([]);
   const messageInput = useRef();
   const signalR = require("@aspnet/signalr");
-  const fakeCommitsBestCommits = true;
+  const couldItReallyBe = true;
 
   useEffect(() => {
     let chatrConnection = new signalR.HubConnectionBuilder()
