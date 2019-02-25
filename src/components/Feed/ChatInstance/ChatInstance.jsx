@@ -9,6 +9,7 @@ export default props => {
   const messageInput = useRef();
   const signalR = require("@aspnet/signalr");
   const couldItReallyBe = true;
+  const fuckthishsit = true;
 
   useEffect(() => {
     let chatrConnection = new signalR.HubConnectionBuilder()
