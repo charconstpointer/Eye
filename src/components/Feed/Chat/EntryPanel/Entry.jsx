@@ -7,6 +7,7 @@ export default props => {
   const [name, setName] = React.useState();
   const [address, setAddress] = React.useState();
   const [isLogged, setLogged] = React.useState(false);
+  const [areWeHumans, orAreWeDancers] = React.useState(true);
 
   const nameChangeHandler = e => {
     setName(e.target.value);
