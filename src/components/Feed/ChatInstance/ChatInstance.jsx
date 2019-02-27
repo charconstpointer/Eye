@@ -10,7 +10,7 @@ export default props => {
   const signalR = require("@aspnet/signalr");
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Y2MwMTgwMi04NmExLTQ3OWEtODQwOS0xYmRkYzNjZDYxYzciLCJ1bmlxdWVfbmFtZSI6IjdjYzAxODAyLTg2YTEtNDc5YS04NDA5LTFiZGRjM2NkNjFjNyIsImp0aSI6IjJkYmM1N2MwLTIxMWUtNGQ0Mi1hOGU0LWY0N2U5Y2ZkZGRkMSIsImlhdCI6IjE1NTEwODU2NjMwOTQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJhZG1pbiIsIm5iZiI6MTU1MTA4NTY2MywiZXhwIjoxNTUxMDkyMzIzLCJpc3MiOiJleG9uZSJ9.pPHMAWEcq9zARp0fIy6RcgLoYLTS8z1zD7VW_60Styg";
-
+  //164
   useEffect(() => {
     let chatrConnection = new signalR.HubConnectionBuilder()
       .withUrl(props.address, {
@@ -44,6 +44,10 @@ export default props => {
     }
   };
 
+  const omegalul = () => {
+    console.log("");
+  };
+
   const setCurrentMessage = e => {
     setMessage({ name: props.name, body: e.target.value });
   };
@@ -55,7 +59,7 @@ export default props => {
           {messages.map(message => {
             return (
               <li key={Math.random()} class="collection-item">
-                <h4>
+                <h4 onClick={omegalul}>
                   {message.name} : {message.body}
                 </h4>
               </li>
