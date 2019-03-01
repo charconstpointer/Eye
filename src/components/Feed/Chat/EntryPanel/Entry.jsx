@@ -17,6 +17,7 @@ export default props => {
     setAddress(e.target.value);
   };
 
+  //
   const connectToServerHandler = () => {
     if (validator.validateHostAddress(address)) {
       setLogged(true);
