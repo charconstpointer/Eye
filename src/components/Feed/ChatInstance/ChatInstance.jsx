@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { MessagePackHubProtocol } from "@aspnet/signalr-protocol-msgpack";
 import "../Chat/ChatFeed.css";
 
 export default props => {
@@ -7,22 +8,27 @@ export default props => {
   const [message, setMessage] = useState({ body: "" });
   const [messages, setMessages] = useState([]);
   const messageInput = useRef();
+  const msgpack = require("msgpack5");
+  const protocol = require("@aspnet/signalr-protocol-msgpack");
   const signalR = require("@aspnet/signalr");
   const token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Y2MwMTgwMi04NmExLTQ3OWEtODQwOS0xYmRkYzNjZDYxYzciLCJ1bmlxdWVfbmFtZSI6IjdjYzAxODAyLTg2YTEtNDc5YS04NDA5LTFiZGRjM2NkNjFjNyIsImp0aSI6IjJkYmM1N2MwLTIxMWUtNGQ0Mi1hOGU0LWY0N2U5Y2ZkZGRkMSIsImlhdCI6IjE1NTEwODU2NjMwOTQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJhZG1pbiIsIm5iZiI6MTU1MTA4NTY2MywiZXhwIjoxNTUxMDkyMzIzLCJpc3MiOiJleG9uZSJ9.pPHMAWEcq9zARp0fIy6RcgLoYLTS8z1zD7VW_60Styg";
   //164
   useEffect(() => {
     let chatrConnection = new signalR.HubConnectionBuilder()
-      .withUrl(props.address, {
-        accessTokenFactory: () => token
-      })
+      .withUrl(props.address)
+      // .withUrl(props.address, {
+      //   accessTokenFactory: () => token
+      // })
+      .withHubProtocol(new MessagePackHubProtocol())
       .build();
     chatrConnection.on("receiveMessage", message => {
+      console.log(message);
       setMessages(prevMessages => [
         ...prevMessages,
         {
-          name: message.name,
-          body: message.body
+          name: message.Name,
+          body: message.Body
         }
       ]);
     });
@@ -38,7 +44,8 @@ export default props => {
 
   const sendMessage = () => {
     if (message.body.length !== 0) {
-      connection.invoke("sendmessage", message);
+      connection.invoke("sendMessage", { name: "dsa", body: "ewqeqw" });
+      // connection.invoke("sendmessage", message);
       setMessage({ ...message, body: "" });
       messageInput.current.value = "";
     }
@@ -75,6 +82,7 @@ export default props => {
       </div>
     );
   } else {
+    //ojapierdole
     return <h3>Connecting...</h3>;
   }
 };
